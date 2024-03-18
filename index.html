@@ -75,6 +75,11 @@
   #resultado p {
     margin-bottom: 10px;
   }
+
+  #data {
+    margin-top: 20px;
+    color: #777;
+  }
 </style>
 </head>
 <body>
@@ -88,10 +93,12 @@
     <div class="input-group">
       <label for="resposta-osat">Resposta OSAT:</label>
       <input type="number" id="resposta-osat" required>
+      <span id="limite-osat">Limite: 92%</span>
     </div>
     <div class="input-group">
       <label for="osat-t3">OSAT - T3 (Notas 8, 9 e 10):</label>
       <input type="number" id="osat-t3" required>
+      <span id="limite-osat-t3">Limite: 91.1%</span>
     </div>
     <div class="input-group">
       <label for="osat-b3b">OSAT - B3B (Notas 0, 1 e 2):</label>
@@ -104,6 +111,7 @@
     <button type="button" onclick="calcular()">Calcular</button>
   </form>
   <div id="resultado"></div>
+  <div id="data"></div>
 </div>
 <script>
   function calcular() {
@@ -118,16 +126,44 @@
     var osatT3Real = (osatT3 / pesquisasRespondidas) * 100;
     var b3bReal = (osatB3B / pesquisasRespondidas) * 100;
 
+    var metaOSAT = 92;
+    var metaOSATT3 = 91.1;
+
     if (osatReal > 100) {
       osatReal /= 10;
     }
 
-    document.getElementById('resultado').innerHTML = `
-      <p>FTR REAL: ${ftrReal.toFixed(2)}%</p>
-      <p>OSAT REAL: ${osatReal.toFixed(2)}%</p>
-      <p>OSAT-T3 REAL: ${osatT3Real.toFixed(2)}%</p>
-      <p>B3B REAL: ${b3bReal.toFixed(2)}%</p>
-    `;
+    var resultadoHTML = '';
+
+    if (ftrReal >= 100) {
+      resultadoHTML += `<p style="color: green;">FTR REAL: ${ftrReal.toFixed(2)}% (Limite: 100%)</p>`;
+    } else {
+      resultadoHTML += `<p style="color: red;">FTR REAL: ${ftrReal.toFixed(2)}% (Limite: 100%)</p>`;
+    }
+
+    if (osatReal >= metaOSAT) {
+      resultadoHTML += `<p style="color: green;">OSAT REAL: ${osatReal.toFixed(2)}% (Limite: ${metaOSAT}%)</p>`;
+    } else {
+      resultadoHTML += `<p style="color: red;">OSAT REAL: ${osatReal.toFixed(2)}% (Limite: ${metaOSAT}%)</p>`;
+    }
+
+    if (osatT3Real >= metaOSATT3) {
+      resultadoHTML += `<p style="color: green;">OSAT-T3 REAL: ${osatT3Real.toFixed(2)}% (Limite: ${metaOSATT3}%)</p>`;
+    } else {
+      resultadoHTML += `<p style="color: red;">OSAT-T3 REAL: ${osatT3Real.toFixed(2)}% (Limite: ${metaOSATT3}%)</p>`;
+    }
+
+    if (b3bReal <= 4) {
+      resultadoHTML += `<p style="color: green;">B3B REAL: ${b3bReal.toFixed(2)}% (Limite: 4%)</p>`;
+    } else {
+      resultadoHTML += `<p style="color: red;">B3B REAL: ${b3bReal.toFixed(2)}% (Limite: 4%)</p>`;
+    }
+
+    document.getElementById('resultado').innerHTML = resultadoHTML;
+
+    var dataAtual = new Date();
+    var dataFormatada = dataAtual.toLocaleDateString('pt-BR');
+    document.getElementById('data').innerText = `Data: ${dataFormatada}`;
   }
 </script>
 </body>
