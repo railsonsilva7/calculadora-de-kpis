@@ -1,170 +1,127 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de KPIs</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-
-  .container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-  }
-
-  h1 {
-    margin-bottom: 30px;
-    color: #007bff;
-  }
-
-  .input-group {
-    margin-bottom: 20px;
-    text-align: left;
-  }
-
-  .input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-    font-weight: bold;
-  }
-
-  .input-group input {
-    width: calc(100% - 20px);
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-  }
-
-  button {
-    padding: 12px 30px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 16px;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  #resultado {
-    margin-top: 30px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  #resultado p {
-    margin-bottom: 10px;
-  }
-
-  #data {
-    margin-top: 20px;
-    color: #777;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de KPIs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        h1 i {
+            margin-right: 5px;
+        }
+        .date {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+            margin-top: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #555;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .icon {
+            margin-right: 5px;
+        }
+        .highlight {
+            background-color: #e6f7ff;
+        }
+        .positive {
+            color: green;
+        }
+        .negative {
+            color: red;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <h1>Calculadora de KPIs</h1>
-  <form id="data-form">
-    <div class="input-group">
-      <label for="resposta-ftr">Resposta FTR:</label>
-      <input type="number" id="resposta-ftr" required>
+    <div class="container">
+        <h1>Análise de KPIs <i class="fas fa-chart-line icon"></i></h1>
+        <p class="date" id="currentDate">Data: </p>
+        <table>
+            <tr>
+                <th>Display</th>
+                <th>Placa+Kit</th>
+                <th>OTD 2h</th>
+                <th>OTD 48h</th>
+                <th>Bounce</th>
+                <th>T3</th>
+                <th>B3</th>
+                <th>OSAT</th>
+            </tr>
+            <tr>
+                <td id="display">10,0%</td>
+                <td id="placakit">5,5%</td>
+                <td class="positive">70,9%</td>
+                <td class="positive">94,5%</td>
+                <td class="positive">1,8%</td>
+                <td class="positive">90,0%</td>
+                <td>0,0%</td>
+                <td class="positive">96,0%</td>
+            </tr>
+        </table>
     </div>
-    <div class="input-group">
-      <label for="resposta-osat">Resposta OSAT:</label>
-      <input type="number" id="resposta-osat" required>
-      <span id="limite-osat">Limite: 92%</span>
-    </div>
-    <div class="input-group">
-      <label for="osat-t3">OSAT - T3 (Notas 8, 9 e 10):</label>
-      <input type="number" id="osat-t3" required>
-      <span id="limite-osat-t3">Limite: 91.1%</span>
-    </div>
-    <div class="input-group">
-      <label for="osat-b3b">OSAT - B3B (Notas 0, 1 e 2):</label>
-      <input type="number" id="osat-b3b" required>
-    </div>
-    <div class="input-group">
-      <label for="pesquisas-respondidas">Pesquisas Respondidas:</label>
-      <input type="number" id="pesquisas-respondidas" required>
-    </div>
-    <button type="button" onclick="calcular()">Calcular</button>
-  </form>
-  <div id="resultado"></div>
-  <div id="data"></div>
-</div>
-<script>
-  function calcular() {
-    var respostaFTR = parseInt(document.getElementById('resposta-ftr').value);
-    var respostaOSAT = parseInt(document.getElementById('resposta-osat').value);
-    var osatT3 = parseInt(document.getElementById('osat-t3').value);
-    var osatB3B = parseInt(document.getElementById('osat-b3b').value);
-    var pesquisasRespondidas = parseInt(document.getElementById('pesquisas-respondidas').value);
+    <script>
+        window.onload = function() {
+            // Obtendo a data atual
+            var currentDate = new Date();
+            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            var formattedDate = currentDate.toLocaleDateString('pt-BR', options);
+            
+            // Atualizando o elemento HTML com a data atual
+            document.getElementById('currentDate').textContent += formattedDate;
 
-    var ftrReal = (respostaFTR / pesquisasRespondidas) * 100;
-    var osatReal = (respostaOSAT / pesquisasRespondidas) * 100;
-    var osatT3Real = (osatT3 / pesquisasRespondidas) * 100;
-    var b3bReal = (osatB3B / pesquisasRespondidas) * 100;
+            // Comparando os valores de Display e Placa+Kit com suas metas
+            var displayValue = parseFloat(document.getElementById('display').textContent.replace(',', '.'));
+            var placakitValue = parseFloat(document.getElementById('placakit').textContent.replace(',', '.'));
+            var displayGoal = 24.0;
+            var placakitGoal = 15.6;
 
-    var metaOSAT = 92;
-    var metaOSATT3 = 91.1;
+            if (displayValue < displayGoal) {
+                document.getElementById('display').classList.add('positive');
+            } else {
+                document.getElementById('display').classList.add('negative');
+            }
 
-    if (osatReal > 100) {
-      osatReal /= 10;
-    }
-
-    var resultadoHTML = '';
-
-    if (ftrReal >= 100) {
-      resultadoHTML += `<p style="color: green;">FTR REAL: ${ftrReal.toFixed(2)}% (Limite: 100%)</p>`;
-    } else {
-      resultadoHTML += `<p style="color: red;">FTR REAL: ${ftrReal.toFixed(2)}% (Limite: 100%)</p>`;
-    }
-
-    if (osatReal >= metaOSAT) {
-      resultadoHTML += `<p style="color: green;">OSAT REAL: ${osatReal.toFixed(2)}% (Limite: ${metaOSAT}%)</p>`;
-    } else {
-      resultadoHTML += `<p style="color: red;">OSAT REAL: ${osatReal.toFixed(2)}% (Limite: ${metaOSAT}%)</p>`;
-    }
-
-    if (osatT3Real >= metaOSATT3) {
-      resultadoHTML += `<p style="color: green;">OSAT-T3 REAL: ${osatT3Real.toFixed(2)}% (Limite: ${metaOSATT3}%)</p>`;
-    } else {
-      resultadoHTML += `<p style="color: red;">OSAT-T3 REAL: ${osatT3Real.toFixed(2)}% (Limite: ${metaOSATT3}%)</p>`;
-    }
-
-    if (b3bReal <= 4) {
-      resultadoHTML += `<p style="color: green;">B3B REAL: ${b3bReal.toFixed(2)}% (Limite: 4%)</p>`;
-    } else {
-      resultadoHTML += `<p style="color: red;">B3B REAL: ${b3bReal.toFixed(2)}% (Limite: 4%)</p>`;
-    }
-
-    document.getElementById('resultado').innerHTML = resultadoHTML;
-
-    var dataAtual = new Date();
-    var dataFormatada = dataAtual.toLocaleDateString('pt-BR');
-    document.getElementById('data').innerText = `Data: ${dataFormatada}`;
-  }
-</script>
+            if (placakitValue < placakitGoal) {
+                document.getElementById('placakit').classList.add('positive');
+            } else {
+                document.getElementById('placakit').classList.add('negative');
+            }
+        }
+    </script>
 </body>
 </html>
