@@ -4,124 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Análise de KPIs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        h1 i {
-            margin-right: 5px;
-        }
-        .date {
-            font-size: 14px;
-            color: #888;
-            text-align: center;
-            margin-top: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 12px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-            color: #555;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        .icon {
-            margin-right: 5px;
-        }
-        .highlight {
-            background-color: #e6f7ff;
-        }
-        .positive {
-            color: green;
-        }
-        .negative {
-            color: red;
-        }
+        /* Estilos CSS */
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Análise de KPIs <i class="fas fa-chart-line icon"></i></h1>
-        <p class="date" id="currentDate">Data: </p>
-        <table>
-            <tr>
-                <th>Display</th>
-                <th>Placa+Kit</th>
-                <th>OTD 2h</th>
-                <th>OTD 48h</th>
-                <th>Bounce</th>
-                <th>T3</th>
-                <th>B3</th>
-                <th>OSAT</th>
-            </tr>
-            <tr>
-                <td id="display">10,0%</td>
-                <td id="placakit">5,5%</td>
-                <td class="positive">70,9%</td>
-                <td class="positive">94,5%</td>
-                <td class="positive">1,8%</td>
-                <td class="positive">90,0%</td>
-                <td>0,0%</td>
-                <td class="positive">96,0%</td>
-            </tr>
+        <h1>Análise de KPIs</h1>
+        <p class="date" id="currentDate"></p>
+        <table id="dataTable">
+            <!-- Tabela será preenchida dinamicamente com os dados da planilha -->
         </table>
     </div>
     <script>
-        window.onload = function() {
-            // Obtendo a data atual
-            var currentDate = new Date();
-            var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            var formattedDate = currentDate.toLocaleDateString('pt-BR', options);
-            
-            // Atualizando o elemento HTML com a data atual
-            document.getElementById('currentDate').textContent += formattedDate;
-
-            // Comparando os valores de Display e Placa+Kit com suas metas
-            var displayValue = parseFloat(document.getElementById('display').textContent.replace(',', '.'));
-            var placakitValue = parseFloat(document.getElementById('placakit').textContent.replace(',', '.'));
-            var displayGoal = 24.0;
-            var placakitGoal = 15.6;
-
-            if (displayValue < displayGoal) {
-                document.getElementById('display').classList.add('positive');
-            } else {
-                document.getElementById('display').classList.add('negative');
-            }
-
-            if (placakitValue < placakitGoal) {
-                document.getElementById('placakit').classList.add('positive');
-            } else {
-                document.getElementById('placakit').classList.add('negative');
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var fileInput = document.createElement('input');
+            fileInput.type = 'file';
+            fileInput.accept = '.xlsx';
+            fileInput.addEventListener('change', function(e) {
+                var file = e.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var data = new Uint8Array(e.target.result);
+                    var workbook = XLSX.read(data, { type: 'array' });
+                    var sheetName = workbook.SheetNames[0];
+                    var sheet = workbook.Sheets[sheetName];
+                    var tableData = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                    // Atualizar a data na página
+                    var currentDate = new Date();
+                    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    var formattedDate = currentDate.toLocaleDateString('pt-BR', options);
+                    document.getElementById('currentDate').textContent = formattedDate;
+                    // Preencher a tabela com os dados da planilha
+                    var dataTable = document.getElementById('dataTable');
+                    tableData.forEach(function(row) {
+                        var tr = document.createElement('tr');
+                        row.forEach(function(cellData) {
+                            var td = document.createElement('td');
+                            td.textContent = cellData;
+                            tr.appendChild(td);
+                        });
+                        dataTable.appendChild(tr);
+                    });
+                };
+                reader.readAsArrayBuffer(file);
+            });
+            document.body.appendChild(fileInput);
+            fileInput.click();
+        });
     </script>
 </body>
 </html>
