@@ -65,6 +65,9 @@
         .negative {
             color: red;
         }
+        .neutral {
+            color: blue;
+        }
 
         /* Estilos para dispositivos móveis */
         @media screen and (max-width: 600px) {
@@ -99,9 +102,9 @@
                 <th>OSAT</th>
             </tr>
             <tr>
-                <td id="display">10,0%</td>
-                <td id="placakit">5,5%</td>
-                <td class="positive">70,9%</td>
+                <td id="display">14,5%</td>
+                <td id="placakit">11,8%</td>
+                <td class="positive">69,1%</td>
                 <td class="positive">94,5%</td>
                 <td class="positive">1,8%</td>
                 <td class="positive">90,0%</td>
@@ -120,22 +123,16 @@
             // Atualizando o elemento HTML com a data atual
             document.getElementById('currentDate').textContent = formattedDate;
 
-            // Comparando os valores de Display e Placa+Kit com suas metas
-            var displayValue = parseFloat(document.getElementById('display').textContent.replace(',', '.'));
-            var placakitValue = parseFloat(document.getElementById('placakit').textContent.replace(',', '.'));
+            // Comparando o valor de Display com a meta
+            var displayValue = parseFloat(document.getElementById('display').textContent);
             var displayGoal = 24.0;
-            var placakitGoal = 15.6;
 
             if (displayValue < displayGoal) {
-                document.getElementById('display').classList.add('positive');
-            } else {
                 document.getElementById('display').classList.add('negative');
-            }
-
-            if (placakitValue < placakitGoal) {
-                document.getElementById('placakit').classList.add('positive');
+            } else if (displayValue == displayGoal) {
+                document.getElementById('display').classList.add('neutral');
             } else {
-                document.getElementById('placakit').classList.add('negative');
+                document.getElementById('display').classList.add('positive');
             }
         }
     </script>
