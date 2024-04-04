@@ -65,9 +65,6 @@
         .negative {
             color: red;
         }
-        .pink {
-            color: pink;
-        }
     </style>
 </head>
 <body>
@@ -144,8 +141,6 @@
                 var element = document.getElementById(elementId);
                 if (value < goal) {
                     element.classList.add('positive');
-                } else if (value > goal) {
-                    element.classList.add('red');
                 } else {
                     element.classList.add('negative');
                 }
