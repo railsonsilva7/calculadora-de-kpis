@@ -1,90 +1,33 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-  }
-  
-  .container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  h1 i {
-    margin-right: 5px;
-  }
-  
-  .date {
-    font-size: 14px;
-    color: #888;
-    text-align: center;
-    margin-top: 10px;
+.container {
+    /* existing styles */
+    position: relative; /* for the table to be positioned relative to the container */
   }
   
   table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    background-color: #fff; /* same as the container background color */
+    position: absolute; /* position the table relative to the container */
+    top: 0;
+    left: 0;
   }
   
-  th,
-  td {
-    padding: 12px;
-    text-align: center;
+  th, td {
+    /* existing styles */
     border-bottom: 1px solid #ddd;
+    border-right: 1px solid #ddd; /* add border-right to create a grid-like layout */
+  }
+  
+  th:last-child, td:last-child {
+    border-right: none; /* remove border-right for the last column */
   }
   
   th {
-    background-color: #f2f2f2;
-    color: #555;
-    font-weight: bold;
+    /* existing styles */
+    border-top: 1px solid #ddd; /* add border-top to create a grid-like layout */
   }
   
-  tr:nth-child(even) {
-    background-color: #f9f9f9;
-  }
-  
-  .icon {
-    margin-right: 5px;
-  }
-  
-  .positive {
-    color: green;
-    /* Defina a cor para valores inferiores à meta */
-  }
-  
-  .negative {
-    color: red;
-    /* Defina a cor para valores superiores à meta */
-  }
-  
-  @media (max-width: 600px) {
-    .container {
-      max-width: 100%;
-      padding: 10px;
-    }
-  
-    h1 {
-      font-size: 24px;
-    }
-  
-    table {
-      font-size: 14px;
-    }
-  
-    th,
-    td {
-      padding: 8px;
-    }
+  tr:last-child td {
+    border-bottom: none; /* remove border-bottom for the last row */
   }
