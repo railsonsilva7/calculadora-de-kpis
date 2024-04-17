@@ -7,16 +7,34 @@ window.onload = function() {
     // Atualizando o elemento HTML com a data atual
     document.getElementById('currentDate').textContent += formattedDate;
 
-    // Comparando os valores com suas metas
-    var displayValue = 13.7;
-    var placakitValue = 15.7;
-    var otd2hValue = 68.6;
-    var otd48hValue = 96.1;
-    var bounceValue = 0.0;
-    var t3Value = 0.0;
-    var b3Value = 100.0;
-    var osatValue = 0;
 
+
+    
+
+    // Comparando os valores com suas metas
+
+    var displayValue =	11.1	;
+    var placakitValue =	11.1	;
+    var otd2hValue =	69.1	;
+    var otd48hValue =	97.5	;
+    var bounceValue =	0.0	;
+    var t3Value =	66.7	;
+    var b3Value =	33.3	;
+    var osatValue =	66.7	;
+
+
+
+
+    
+
+   /* var placakitValue = 11.1;
+    var otd2hValue = 69.1;
+    var otd48hValue = 97.5;
+    var bounceValue = 0.0;
+    var t3Value = 66.7;
+    var b3Value = 33.3;
+    var osatValue = 66.66; */
+//
     var displayGoal = 24.0;
     var placakitGoal = 15.6;
     var otd2hGoal = 65.0;
@@ -53,9 +71,9 @@ window.onload = function() {
 
     // Aplicando cor para OTD48h de acordo com a regra especificada
     var otd2hElement = document.getElementById('otd48h');
-    if (otd2hValue > otd2hGoal) {
-        otd2hElement.classList.add('positive');
-    } else if (otd2hValue < otd2hGoal) {
+    if (otd48hValue > otd48hGoal) {
+        otd2hElement.classList.add('positve');
+    } else if (otd48hValue < otd48hGoal) {
         otd2hElement.classList.add('negative');
     }
 
@@ -72,5 +90,25 @@ window.onload = function() {
         otd2hElement.classList.add('negative');
     } else if (otd2hValue < otd2hGoal) {
         otd2hElement.classList.add('positive');
+        
     }
+
+    // Aplicando cor para osat de acordo com a regra especificada
+    var otd2hElement = document.getElementById('bounce');
+    if (bounceValue > bounceGoal) {
+        otd2hElement.classList.add('positive');
+    } else if (otd2hValue < otd2hGoal) {
+        otd2hElement.classList.add('negative');
+        
+    }
+    
+    document.getElementById("display").textContent = `${displayValue}%`;
+document.getElementById("placakit").textContent = `${placakitValue}%`;
+document.getElementById("otd2h").textContent = `${otd2hValue}%`;
+document.getElementById("otd48h").textContent = `${otd48hValue}%`; 
+document.getElementById("bounce").textContent = `${bounceValue}%`;
+document.getElementById("t3").textContent = `${t3Value}%`; 
+document.getElementById("b3").textContent = `${b3Value}%`;
+document.getElementById("osat").textContent = `${osatValue}`;
+
 }
