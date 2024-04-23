@@ -91,9 +91,9 @@ window.onload = function() {
     // Aplicando cor para osat de acordo com a regra especificada
     var otd2hElement = document.getElementById('bounce');
     if (bounceValue > bounceGoal) {
-        otd2hElement.classList.add('positive');
-    } else if (otd2hValue < otd2hGoal) {
         otd2hElement.classList.add('negative');
+    } else if (otd2hValue < otd2hGoal) {
+        otd2hElement.classList.add('positive');
         
     }
     
