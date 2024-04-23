@@ -97,7 +97,7 @@ window.onload = function() {
         
     }
     
-    document.getElementById("display").textContent = `${displayValue}%`;
+    document.getElementById("display).textContent = `${displayValue}%`;
 document.getElementById("placakit").textContent = `${placakitValue}%`;
 document.getElementById("otd2h").textContent = `${otd2hValue}%`;
 document.getElementById("otd48h").textContent = `${otd48hValue}%`; 
