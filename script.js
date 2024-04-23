@@ -13,14 +13,21 @@ window.onload = function() {
 
     // Comparando os valores com suas metas
 
-    var displayValue = 10.1;
-    var placakitValue =	14.1;
-    var otd2hValue = 64.6;
-    var otd48hValue = 98.0;
-    var bounceValue = 0.0;
-    var t3Value = 95.7;
-    var b3Value = 4.3;
-    var osatValue =	95.2;   
+    var displayValue =	10.1	;
+    var placakitValue =	14.1	;
+    var otd2hValue =	64.6	;
+    var otd48hValue =	98.0	;
+    var bounceValue =	0.0	;
+    var t3Value =	95.7	;
+    var b3Value =	4.3	;
+    var osatValue =	95.2	;
+
+
+
+
+
+
+    
 
    /* var placakitValue = 11.1;
     var otd2hValue = 69.1;
@@ -63,41 +70,18 @@ window.onload = function() {
     } else if (otd2hValue < otd2hGoal) {
         otd2hElement.classList.add('negative');
     }
-
-    // Aplicando cor para OTD48h de acordo com a regra especificada
-    var otd2hElement = document.getElementById('otd48h');
-    if (otd48hValue > otd48hGoal) {
-        otd2hElement.classList.add('positve');
-    } else if (otd48hValue < otd48hGoal) {
-        otd2hElement.classList.add('negative');
-    }
-
-    // Aplicando cor para t3 de acordo com a regra especificada
-    var otd2hElement = document.getElementById('t3');
-    if (otd2hValue > otd2hGoal) {
-        otd2hElement.classList.add('negative');
-    } else if (otd2hValue < otd2hGoal) {
-        otd2hElement.classList.add('positive');
-    }
     // Aplicando cor para osat de acordo com a regra especificada
-    var otd2hElement = document.getElementById('osat');
-    if (otd2hValue > otd2hGoal) {
-        otd2hElement.classList.add('positive');
-    } else if (otd2hValue < otd2hGoal) {
-        otd2hElement.classList.add('negative');
-        
-    }
+    var osatElement = document.getElementById('osat');
+    if (osatValue > osatGoal) {
+        osatElement.classList.add('positive');
+    } else if (osatValue < osatGoal) {
+        osatElement.classList.add('negative');}
 
-    // Aplicando cor para osat de acordo com a regra especificada
-    var otd2hElement = document.getElementById('bounce');
-    if (bounceValue > bounceGoal) {
-        otd2hElement.classList.add('negative');
-    } else if (otd2hValue < otd2hGoal) {
-        otd2hElement.classList.add('positive');
+    
         
     }
     
-    document.getElementById("display).textContent = `${displayValue}%`;
+    document.getElementById("display").textContent = `${displayValue}%`;
 document.getElementById("placakit").textContent = `${placakitValue}%`;
 document.getElementById("otd2h").textContent = `${otd2hValue}%`;
 document.getElementById("otd48h").textContent = `${otd48hValue}%`; 
@@ -106,4 +90,3 @@ document.getElementById("t3").textContent = `${t3Value}%`;
 document.getElementById("b3").textContent = `${b3Value}%`;
 document.getElementById("osat").textContent = `${osatValue}`;
 
-}
