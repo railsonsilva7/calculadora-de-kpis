@@ -127,15 +127,7 @@ window.onload = function() {
 
     
 
-    // Aplicando cor para bounce de acordo com a regra especificada
-    var b3Element = document.getElementById('b3');
-    if (b3Value < b3Goal) {
-        b3Element.classList.add('negative');
-    } else if (b3Value <= b3Goal) {
-        b3Element.classList.add('positive');
-    }
-
-          
+              
     
     
     document.getElementById("display").textContent = `${displayValue}%`;
