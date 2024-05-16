@@ -13,14 +13,16 @@ window.onload = function() {
 
     // Comparando os valores com suas metas
 
-    var displayValue =	7.6	;
-    var placakitValue =	14.5	;
-    var otd2hValue =	68.6	;
-    var otd48hValue =	98.3	;
-    var bounceValue =	0.0	;
-    var t3Value =	97.1	;
-    var b3Value =	2.9	;
-    var osatValue =	96.4	;
+    var displayValue =	8.3	;
+    var placakitValue =	20.0	;
+    var otd2hValue =	58.3	;
+    var ectValue =	5.5	
+    var otd48hValue =	100.0	;
+    var bounceValue =	6.7	;
+    var t3Value =	100.0	;
+    var b3Value =	0.0	;
+    var osatValue =	100.0	;
+
 
 
  
@@ -37,6 +39,7 @@ window.onload = function() {
     var placakitGoal = 15.6;
     var otd2hGoal = 65.0;
     var otd48hGoal = 96.0;
+    var ectGoal = 3.0 ;
     var bounceGoal = 4.0;
     var t3Goal = 91.1;
     var b3Goal = 4.0;
@@ -58,6 +61,17 @@ window.onload = function() {
     applyColorClass(bounceValue, bounceGoal, 'bounce');
     applyColorClass(b3Value, b3Goal, 'b3');
     applyColorClass(osatValue, osatGoal, 'osat');*/
+
+
+
+    // Aplicando cor para ect de acordo com a regra especificada
+    var ectElement = document.getElementById('ect');
+    if (ectValue > ectGoal) {
+        ectElement.classList.add('negative');
+    } else if (ectValue <= ectGoal) {
+        ectElement.classList.add('positive');
+    }
+
 
     // Aplicando cor para display de acordo com a regra especificada
     var displayElement = document.getElementById('display');
@@ -93,9 +107,9 @@ window.onload = function() {
 
     // Aplicando cor para bounce de acordo com a regra especificada
     var bounceElement = document.getElementById('bounce');
-    if (bounceValue > bounceGoal) {
+    if (0 > bounceGoal) {
         bounceElement.classList.add('negative');
-    } else if (bounceValue < bounceGoal) {
+    } else if (0 < bounceGoal) {
         bounceElement.classList.add('positive');
     }
 
@@ -129,12 +143,12 @@ window.onload = function() {
 
               
     
-    
+    document.getElementById("ect").textContent = `${ectValue}`; 
     document.getElementById("display").textContent = `${displayValue}%`;
 document.getElementById("placakit").textContent = `${placakitValue}%`;
 document.getElementById("otd2h").textContent = `${otd2hValue}%`;
 document.getElementById("otd48h").textContent = `${otd48hValue}%`; 
-document.getElementById("bounce").textContent = `${bounceValue}%`;
+document.getElementById("bounce").textContent = `${0}%`;
 document.getElementById("t3").textContent = `${t3Value}%`; 
 document.getElementById("b3").textContent = `${b3Value}%`;
 document.getElementById("osat").textContent = `${osatValue}`;
