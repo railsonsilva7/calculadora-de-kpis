@@ -19,9 +19,10 @@ window.onload = function() {
     var ectValue =	5.5	
     var otd48hValue =	100.0	;
     var bounceValue =	6.7	;
-    var t3Value =	100.0	;
-    var b3Value =	0.0	;
-    var osatValue =	100.0	;
+    var t3Value =	95.7	;
+    var b3Value =	4.3	;
+    var osatValue =	93.0	;
+
 
 
 
@@ -125,7 +126,7 @@ window.onload = function() {
     var b3Element = document.getElementById('b3');
     if (b3Value <= b3Goal) {
         b3Element.classList.add('positive');
-    } else if (b3Value < b3Goal) {
+    } else if (b3Value > b3Goal) {
         b3Element.classList.add('negative');
     }
     
