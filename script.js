@@ -109,9 +109,9 @@ window.onload = function() {
 
     // Aplicando cor para bounce de acordo com a regra especificada
     var bounceElement = document.getElementById('bounce');
-    if (0 > bounceGoal) {
+    if (bounceValue > bounceGoal) {
         bounceElement.classList.add('negative');
-    } else if (0 < bounceGoal) {
+    } else if (bounceValue < bounceGoal) {
         bounceElement.classList.add('positive');
     }
 
