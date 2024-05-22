@@ -36,14 +36,14 @@ window.onload = function() {
     var b3Value = 33.3;
     var osatValue = 66.66; */
 //
-    var displayGoal = 24.0;
-    var placakitGoal = 15.6;
-    var otd2hGoal = 65.0;
-    var otd48hGoal = 96.0;
+    var displayGoal = 23.0;
+    var placakitGoal = 14.7;
+    var otd2hGoal = 66.0;
+    var otd48hGoal = 96.3;
     var ectGoal = 3.0 ;
-    var bounceGoal = 4.0;
-    var t3Goal = 91.1;
-    var b3Goal = 4.0;
+    var bounceGoal = 3.9;
+    var t3Goal = 91.3;
+    var b3Goal = 3.9;
     var osatGoal = 92.0;
 
     // Função para aplicar classe de cor com base na comparação com a meta
