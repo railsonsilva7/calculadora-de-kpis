@@ -17,12 +17,11 @@ window.onload = function() {
     var placakitValue =	14.4	;
     var otd2hValue =	68.0	;
     var ectValue =	5.5	
-    var otd48hValue =	89.7	;
+    var otd48hValue =	97.9	;
     var bounceValue =	4.1	;
-    var t3Value =	92.3	;
-    var b3Value =	3.8	;
-    var osatValue =	93.5	;
-
+    var t3Value =	94.3	;
+    var b3Value =	2.9	;
+    var osatValue =	95.0	;
 
 
 
