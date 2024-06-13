@@ -19,9 +19,9 @@ window.onload = function() {
     var ectValue =	2.7	;
     var otd48hValue =	98.6	;
     var bounceValue =	0.0	;
-    var t3Value =	96.0	;
-    var b3Value =	2.0	;
-    var osatValue =	96.6	;
+    var t3Value =	100.0	;
+    var b3Value =	0.0	;
+    var osatValue =	99.4	;
 
 
 
