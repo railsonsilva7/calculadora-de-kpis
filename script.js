@@ -13,16 +13,15 @@ window.onload = function() {
 
     // Comparando os valores com suas metas
 
-    var displayValue =	0,0	;
-    var placakitValue =	14,5	;
-    var otd2hValue =	77,4	;
-    var ectValue =	2,5	;
-    var otd48hValue =	100,0	;
-    var bounceValue =	1,6	;
-    var t3Value =	95,8	;
-    var b3Value =	4,2	;
-    var osatValue =	96,7	;
-
+    var displayValue =	6.5	;
+    var placakitValue =	19.4	;
+    var otd2hValue =	77.4	;
+    var ectValue =	2.5	;
+    var otd48hValue =	100.0	;
+    var bounceValue =	1.6	;
+    var t3Value =	95.8	;
+    var b3Value =	4.2	;
+    var osatValue =	96.7	;
 
 
 
