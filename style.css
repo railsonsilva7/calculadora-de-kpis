@@ -9,7 +9,7 @@ body {
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -22,11 +22,22 @@ h1 {
 h1 i {
     margin-right: 5px;
 }
+.titulo {
+    font-size: 30px;
+    color: #c50c0c;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
+    
+    
+} 
 .date {
-    font-size: 14px;
+    font-size: 16px;
     color: #888;
     text-align: center;
     margin-top: 10px;
+    font-weight: bold;
 }
 table {
     width: 100%;
