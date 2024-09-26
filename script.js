@@ -12,15 +12,15 @@ window.onload = function() {
     
 
     // Valores Floripa
-    var displayValue =	20.0	;
+    var displayValue =	16.9	;
     var placakitValue =	20.0	;
-    var otd2hValue =	70.0	;
-    var ectValue =	2.4	;
-    var otd48hValue =	100.0	;
+    var otd2hValue =	75.4	;
+    var ectValue =	2.9	;
+    var otd48hValue =	93.8	;
     var bounceValue =	0.0	;
     var t3Value =	100.0	;
     var b3Value =	0.0	;
-    var osatValue =	93.3	;
+    var osatValue =	98.8	;
 
 // Valores Goiania
 var displayValue_goiania =	7.6	;
