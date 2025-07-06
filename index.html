@@ -3,96 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análise de KPIs</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>KPIs - Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Análise de KPIs (   MOTOCELL) <i class="fas fa-chart-line icon"></i>
-        </h1>
-        <p class="date" id="currentDate">Data: </p>
-        
-        <P class="titulo">FLORIPA</P>
-        
-        <table>
-            <tr>
-                <th></th>
-                <th>Display</th>
-                <th>Placa+Kit</th>
-                <th>OTD 2h</th>
-                <th>OTD48h</th>
-                <th>Bounce</th>
-                <th>T3</th>
-                <th>B3</th>
-                <th>OSAT</th>
-            </tr>
-            <tr>
-                <th>Real</th>
-                <td id="display" class="valor">11,1%</td>
-                <td id="placakit" class="valor">11,1%</td>
-                <td id="otd2h" class="valor">69,1%</td>
-                <td id="otd48h" class="valor positive">97,5%</td>
-                <td id="bounce" class="valor positive">0,0%</td>
-                <td id="t3" class="valor positive">66,7%</td>
-                <td id="b3" class="valor">33,3%</td>
-                <td id="osat" class="valor positive">66,66%</td>
-            </tr>
-            <tr>
-                <th>Limite</th>
-                <td>23.5%</td>
-                <td>16.5%</td>
-                <td>64%</td>
-                <td>95.8%</td>
-                <td>3.0%</td>
-                <td>91.7%</td>
-                <td>3.7%</td>
-                <td>92.0</td>
-            </tr>
-        </table>
-       
-    </div>
-    <div class="container">
-        <P class="titulo">GOIÂNIA</P>
-        <table>
-            <tr>
-                <th></th>
-                <th>Display</th>
-                <th>Placa+Kit</th>
-                <th>OTD 2h</th>
-                <th>OTD48h</th>
-                <th>Bounce</th>
-                <th>T3</th>
-                <th>B3</th>
-                <th>OSAT</th>
-            </tr>
-            <tr>
-                <th>Real</th>
-                <td id="display_goiania" class="valor">0%</td>
-                <td id="placakit_goiania" class="valor">0%</td>
-                <td id="otd2h_goiania" class="valor">0%</td>
-                <td id="otd48h_goiania" class="valor positive">0%</td>
-                <td id="bounce_goiania" class="valor positive">0,0%</td>
-                <td id="t3_goiania" class="valor positive">0%</td>
-                <td id="b3_goiania" class="valor">0%</td>
-                <td id="osat_goiania" class="valor positive">0%</td>
-            </tr>
-            <tr>
-                <th>Limite</th>
-                <td>23.5%</td>
-                <td>16.5%</td>
-                <td>64.0%</td>
-                <td>95.8%</td>
-                <td>3.0%</td>
-                <td>91.7</td>
-                <td>3.7%</td>
-                <td>92.0</td>
-            </tr>
-        </table>
-    </div>
+    <header>
+        <div class="d-flex flex-column align-items-center my-3">
+            <img src="https://motocell.com.br/wp-content/uploads/2024/04/Logo-MotoCell-2.webp" alt="Logo MotoCell" class="logo mb-2">
+            <h1>Dashboard de KPIs</h1>
+        </div>
+    </header>
+    <main class="container py-4">
+        <h2 class="mb-4">Bem-vindo ao Dashboard de KPI's de Floripa</h2>
+        <div class="d-flex justify-content-end mb-3">
+            <button class="btn btn-outline-primary" id="export-btn" onclick="exportKPIs()">
+                <i class="fa-solid fa-download me-2"></i>Exportar KPIs em Imagem
+            </button>
+        </div>
+        <div id="kpis-area">
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-tv fa-2x mb-2 text-primary"></i>
+                            <h5 class="card-title">Display</h5>
+                            <div id="display" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 23,5%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-microchip fa-2x mb-2 text-info"></i>
+                            <h5 class="card-title">Placa+Kit</h5>
+                            <div id="placakit" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 16,5%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-clock fa-2x mb-2 text-success"></i>
+                            <h5 class="card-title">OTD 2h</h5>
+                            <div id="otd2h" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 64,0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-stopwatch fa-2x mb-2 text-success"></i>
+                            <h5 class="card-title">OTD 48h</h5>
+                            <div id="otd48h" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 95,8%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-arrow-rotate-left fa-2x mb-2 text-warning"></i>
+                            <h5 class="card-title">Bounce</h5>
+                            <div id="bounce" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 3,0%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-trophy fa-2x mb-2 text-warning"></i>
+                            <h5 class="card-title">T3</h5>
+                            <div id="t3" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 91,7%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-layer-group fa-2x mb-2 text-secondary"></i>
+                            <h5 class="card-title">B3</h5>
+                            <div id="b3" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 3,7%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="card kpi-card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <i class="fa-solid fa-face-smile fa-2x mb-2 text-success"></i>
+                            <h5 class="card-title">OSAT</h5>
+                            <div id="osat" class="kpi-value">-</div>
+                            <div class="kpi-meta">Meta: 91,7%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-5">
+        <p>&copy; 2025 Dashboard de KPIs. By Railson Silva.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
     <script>
-        
+        function exportKPIs() {
+            const area = document.getElementById('kpis-area');
+            html2canvas(area, {backgroundColor: '#f8f9fa'}).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'kpis.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        }
     </script>
 </body>
 </html>
